@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>商品情報を編集</h1>
+    {% from "_formhelpers.html" import render_field %}
+    <form method="post" action="{{ url_for('update', mer_id=edit_id) }}" novalidate>
+        {{ form.hidden_tag() }}
+        {{ render_field(form.name) }}
+        {{ render_field(form.content, rows=5, cols=50) }}
+        {{ render_field(form.raw_value) }}
+        {{ render_field(form.sell_value) }}
+        {{ form.submit }}
+    </form>
+
+    <a href="{{ url_for('index', change=0) }}">戻る</a>
+{% endblock %}

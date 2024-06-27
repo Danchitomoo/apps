@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>merchants list</h1>
+    <h2>売り上げ：{{sell_sum}}</h2>
+    <h2>利益：{{gain_sum}}</h2>
+
+    <a href="{{  url_for('index', change=0)}}">戻る</a>
+{% endblock %}

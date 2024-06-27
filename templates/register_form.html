@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>会計画面</h1>
+    {% from "_formhelpers.html" import render_field %}
+    <form method="post" action="{{ url_for('register') }}" novalidate>
+        {% if error %}
+            <p>支払金が不足しています</p>
+        {% endif %}
+        {{ form.hidden_tag() }}
+        {{ render_field(form.in_money) }}
+        {{ form.submit }}
+    </form>
+
+    <a href="{{ url_for('regi_input') }}">戻る</a>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>merchants list</h1>
+    {% if merchants == [] %}
+        <p>商品は登録されていません</p>
+    {% else %}
+        <ul>
+            {% for merchant in merchants %}
+                <li>{{ merchant.name }} -
+                    <a href="{{ url_for('update', mer_id=merchant.mer_id) }}">編集</a> |
+                    <a href="{{ url_for('delete', mer_id=merchant.mer_id) }}">削除</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <!-- flash message-->
+    {% for message in get_flashed_messages() %}
+    <div style="color: blue;">
+        {{message}}
+    </div>
+    {% endfor %}
+    <!-- flash message fin.-->
+
+    <a href="{{  url_for('create')}}">新しい商品情報を追加</a>
+    <a href="{{  url_for('regi_input')}}">レジ画面</a>
+    <a href="{{  url_for('show_gains')}}">売り上げ一覧</a>
+    <div>お釣り：{{change}}</div>
+
+{% endblock %}
+
+<!--a href="{{ url_for('regi_input') }}">会計処理画面へ</a-->

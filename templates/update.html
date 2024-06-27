@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>商品情報を編集</h1>
+    <form method="post" action="{{ url_for('update', mer_id=merchant.mer_id) }}">
+        <label for="name">商品名</label>
+        <input type="text" name="name" id="name" value="{{ merchant.name }}" required>
+        <br><br>
+        <label for="content">内容</label>
+        <textarea name="content" id="content" cols="50" rows="5" required>{{ merchant.content }}</textarea>
+        <br><br>
+        <label for="raw_value">原価</label>
+        <input type="text" name="raw_value" id="raw_value" value="{{ merchant.raw_value }}" required>
+        <br><br>
+        <label for="sell_value">売値</label>
+        <input type="text" name="sell_value" id="sell_value" value="{{ merchant.sell_value }}" required>
+        <br><br>
+        <input type="submit" value="更新">
+    </form>
+
+    <a href="{{ url_for('index', change=0) }}">戻る</a>
+{% endblock %}
